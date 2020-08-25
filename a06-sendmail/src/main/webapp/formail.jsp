@@ -21,7 +21,7 @@ if (user == null){
 	
 }
 %>
-<form action=SendMail method=post name=form_sendmail > 
+<form action="SendMail2.jsp" method="post" name="form_sendmail" > 
   <p>&nbsp;</p> 
   <table width=230 border=0 align=center>
     <tr>

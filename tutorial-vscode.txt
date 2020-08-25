@@ -1,0 +1,43 @@
+Para criar projetos java no VSCODE com maven!
+    1-Instalar o maven(mvn) global no SO
+    2-Instalar Java Extension no VSCODE (Seguir o tuto da Loianer)
+    3-Instalar os Servers 
+        3.1- Baixar o Tomcat e intalar a Extension (no VSCODE) e configurar o apontamento
+        3.2- Baixar o Widfly e intalar a Extension (no VSCODE) e configurar o apontamento
+    4-Criar o projeto helloservlet:
+        4.1- Ctrl+3 (Abrir a paleta de comandos)
+        4.2- Selecionar Maven Projects
+            4.2.1- maven-archetype-webapp>version>save
+        4.3- Dependencia no pom.xml
+                <dependency>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>javax.servlet-api</artifactId>
+                    <version>3.1.0</version>
+                    <scope>provided</scope>
+                </dependency>
+        4.4- Criar a pasta java: src/main/java
+        4.5- Servlet (No VSCODE nao sera criado a configuracao automaticamente)
+            4.5.1- Criar um exemplo (package e arquivo): 
+                src/main/java/servlet/HelloServlet.java
+                OBS: Aqui vc precisa add a configuracao do servlet,
+                    em src/main/webapp/WEB-INF/web.xml:
+                        <servlet>
+                            <servlet-name>HelloServlet</servlet-name>
+                            <display-name>HelloServlet</display-name>
+                            <description></description>
+                            <servlet-class>servlet.HelloServlet</servlet-class>
+                        </servlet>
+                        <servlet-mapping>
+                            <servlet-name>HelloServlet</servlet-name>
+                            <url-pattern>/HelloServlet</url-pattern>
+                        </servlet-mapping>
+    5-Rodando o projeto maven no Server:
+        5.1- Va na aba MAVEN (no VSCODE) e procure o projeto pelo nome
+        5.2- Clique nome (helloservlet)>plugins>war:war(play)
+             (Isso ira gerar o helloservlet.war para o Deploy no Server) 
+        5.3- Clique com o botao direito e escolha a opcao: Run on Tomcat Server
+        5.4- Va na aba TOMCAT SERVERS (no VSCODE) e procure o projeto pelo nome
+            (Clique com o botao direito sobre e Open in Browser)
+
+     ;)                   
+

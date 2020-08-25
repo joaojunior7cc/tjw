@@ -7,7 +7,7 @@
 	<title>JSTL</title>
 </head>
 <body>
-	<sql:setDataSource var="bd" driver="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://localhost:3306/tjw" user="root" password="112233-Mysql"/>
+	<sql:setDataSource var="bd" driver="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://localhost/tjw" user="root" password="112233-Mysql"/>
 	<sql:query dataSource="${bd}" sql="select * from tbl_user" var="result"/>
 	<table border="1" width="100%">
 		<tr>

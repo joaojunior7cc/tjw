@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Projeto MVC</title>
+<meta charset="UTF-8">
+<title>Sistema de Cadastro de Clientes V.0</title>
 </head>
 <body>
-	<h2>Projeto com MVC</h2>
-	<a href="ClienteController?app=cadastro">Cadastrar Cliente</a>
+<a href="ClienteController?app=listarCliente">SisClientes</a>
 </body>
 </html>

@@ -13,17 +13,14 @@ public class BeanUtilities {
 	}
 
 	private static void populateBean(Object bean, Map prop) {
-		// TODO Auto-generated method stub
 		try {
 			BeanUtils.populate(bean,prop);
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }

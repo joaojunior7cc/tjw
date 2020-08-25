@@ -33,7 +33,6 @@ public class  ClienteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String app = request.getParameter("app");
-		System.out.println(app);;
 
 		if ((app==null)  || (app.equalsIgnoreCase("listarCliente"))) {
 			forward = "views/listar.jsp";
@@ -52,7 +51,6 @@ public class  ClienteController extends HttpServlet {
 						forward = "views/cadastro.jsp";
 						int id = Integer.parseInt(request.getParameter("clienteId"));
 						request.setAttribute("cliente", clientedao.getClienteById(id));
-						System.out.println("ID do cliente para atualizar:" + id);
 					}
 
 		RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -63,17 +61,17 @@ public class  ClienteController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		forward = "views/listar.jsp";
 		Cliente cliente = new Cliente();
 		BeanUtilities.populateBean(cliente, request);		
-		
+
 		if (cliente.getId() == 0) {
 			clientedao.addCliente(cliente);
 		} else {
 			clientedao.updateCliente(cliente);
 		}
-		
+
 		request.setAttribute("clientes", clientedao.getAllClientes());
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);

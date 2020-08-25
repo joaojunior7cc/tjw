@@ -6,8 +6,8 @@ public class Cliente {
 	private String nome;
 	private String endereco;
 	private String fone;
-	
-	
+
+
 	public int getId() {
 		return id;
 	}
@@ -32,6 +32,4 @@ public class Cliente {
 	public void setFone(String fone) {
 		this.fone = fone;
 	}
-	
-
 }

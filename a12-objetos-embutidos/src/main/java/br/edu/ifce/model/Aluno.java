@@ -1,55 +1,46 @@
-package net.sytes.joaojunior.model;
+package br.edu.ifce.model;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table (name = "tbl_aluno")//novo nome da tabela
+@Table (name = "tbl_aluno")
 public class Aluno {
-	@Id//PK
-	@GeneratedValue//Auto incremento
+	@Id
+	@GeneratedValue
 	private Long id;
 	
-	//Length: limita o tam da string
-	//nulable: Determina se o campo pode possuir valores null ou nao
-	//unique: Determina se a coluna pode ter calores repetidos ou nao
-	//precision: Qtd de digitos de um numero decimal a seram armazenados
-	//scale: qtd de casas decimais de um numero decimal
+	//length: Limita a quantidade de caracteres de uma string
+	//nullable: Determina se o campo pode possuir valores null ou não
+	//unique: Determina se uma coluna pode ter valores repetidos ou não
+	//precision: Determina a quantidade de dígitos de um número decimal a serem armazenadas
+	//scale: Determina a quantidade de casas decimais de um número decimal
+	
 	@Column (name = "nome_aluno")
 	private String nome;
+	
 	@Column (name = "rg")
 	private String RG;
+	
 	@Column (name = "cpf")
 	private String CPF;
-
-	//@Embedded
-	@OneToOne//cria um automaticamente uma coluna (endereco_id) na tbl_aluno
-	@JoinColumn (name = "end_id")//renomear endereco_id
+	
+	@OneToOne
+	@JoinColumn(name="end_id")
 	private Endereco endereco;
-	
-	@Column  (name="ira_aluno", length = 30, nullable = false,scale = 2,precision = 2)
-	private Double ira;
-	@Lob//Large objects
-	private byte [] fotografia;
-	
-	//java.util.DAte e java.util.Calendar
-	//TemporalType.Date: (dia mes ano)
-	//TemporalType.TIME: (hora,minuto, segundo)
-	//TemporalType.TIMESTAMP(padrao): (hora,minuto, segundo)
-	@Temporal(TemporalType.DATE)
-	private Calendar nascimento;
-	
 	
 	
 	public Endereco getEndereco() {
@@ -58,6 +49,20 @@ public class Aluno {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+	@Column(name = "ira_aluno", length = 30, nullable = false, scale = 2 , precision = 2 )
+	private Double ira;
+	
+	//Large Objects
+	@Lob
+	private byte [] fotografia ;
+	
+	//java.util.Date e java.util.Calendar
+	// TemporalType.DATE: Armazena apenas a data (dia, mês e ano).
+	// TemporalType.TIME: Armazena apenas o horário (hora, minuto e segundo).
+	// TemporalType.TIMESTAMP (Padrão): Armazena a data e o horário.
+	@Temporal(TemporalType.DATE)
+	private Calendar nascimento;
+	
 	public Calendar getNascimento() {
 		return nascimento;
 	}
@@ -99,5 +104,7 @@ public class Aluno {
 	}
 	public void setCPF(String cPF) {
 		CPF = cPF;
-	}	
+	}
+
+	
 }

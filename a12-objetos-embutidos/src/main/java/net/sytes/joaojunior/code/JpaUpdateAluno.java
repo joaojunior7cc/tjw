@@ -2,22 +2,20 @@ package net.sytes.joaojunior.code;
 
 import javax.persistence.EntityManager;
 
-import net.sytes.joaojunior.model.Aluno;
-import net.sytes.joaojunior.utils.JPAUtil;
+import br.edu.ifce.model.Aluno;
+import br.edu.ifce.utils.JPAUtil;
 
 public class JpaUpdateAluno {
-	public static void main(String[] args) {
+	public static void main (String args[]) {
 		EntityManager manager = JPAUtil.getEntityManager();
+		Aluno a = manager.find(Aluno.class, 1L);
 		
-		//Buscar no bd
-		Aluno a = manager.find(Aluno.class, 1L);//recupera os dados imediatamente
-		//Aluno a = manager.getReference(Aluno.class, 2L);//posterga esta tarefa ate a primeira chamada de um metodo get no obj desejado.
-		//a.setBairro("Novo Bairro");
-		//Deletar no bd
-		manager.getTransaction().begin();
+		//a.setBairro("Jereissati");
 		manager.persist(a);
+	
+		manager.getTransaction().begin();
 		manager.getTransaction().commit();
+		
 		manager.close();
-
 	}
 }

@@ -2,23 +2,24 @@ package net.sytes.joaojunior.code;
 
 import javax.persistence.EntityManager;
 
-import net.sytes.joaojunior.model.Aluno;
-import net.sytes.joaojunior.utils.JPAUtil;
+import br.edu.ifce.model.Aluno;
+import br.edu.ifce.utils.JPAUtil;
 
 public class JpaRemAluno {
-	
-	public static void main(String[] args) {
+	public static void main (String args[]) {
 		EntityManager manager = JPAUtil.getEntityManager();
-		
-		//Buscar no bd
-		Aluno a = manager.find(Aluno.class, 3L);//recupera os dados imediatamente
-		//Aluno a = manager.getReference(Aluno.class, 2L);//posterga esta tarefa ate a primeira chamada de um metodo get no obj desejado.
-		
-		//Deletar no bd
-		manager.getTransaction().begin();
+		Aluno a = manager.find(Aluno.class, 3L);
+		/*
+		 * O método find() recupera os dados desejados imediatamente.
+		 * Já o método getReference() posterga essa tarefa até a primeira
+		 * chamada de um método get no objeto desejado.
+		 * 
+		 */
 		manager.remove(a);
+		manager.getTransaction().begin();
 		manager.getTransaction().commit();
+	
 		manager.close();
-
 	}
+
 }

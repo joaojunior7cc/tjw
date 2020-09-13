@@ -34,8 +34,8 @@ public class Aluno {
 	private String CPF;
 
 	//@Embedded
-	@OneToOne
-	@JoinColumn (name = "end_id")
+	@OneToOne//cria um automaticamente uma coluna (endereco_id) na tbl_aluno
+	@JoinColumn (name = "end_id")//renomear endereco_id
 	private Endereco endereco;
 	
 	@Column  (name="ira_aluno", length = 30, nullable = false,scale = 2,precision = 2)

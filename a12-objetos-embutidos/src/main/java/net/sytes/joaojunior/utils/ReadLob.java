@@ -1,4 +1,4 @@
-package br.edu.ifce.utils;
+package net.sytes.joaojunior.utils;
 
 import java.io.File;
 import java.io.FileInputStream;

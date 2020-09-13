@@ -1,4 +1,4 @@
-package br.edu.ifce.model;
+package net.sytes.joaojunior.model;
 
 import java.util.ArrayList;
 import java.util.Calendar;

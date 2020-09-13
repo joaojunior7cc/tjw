@@ -3,10 +3,11 @@ package net.sytes.joaojunior.code;
 import java.io.IOException;
 import java.util.Calendar;
 import javax.persistence.EntityManager;
-import br.edu.ifce.model.Aluno;
-import br.edu.ifce.model.Endereco;
-import br.edu.ifce.utils.JPAUtil;
-import br.edu.ifce.utils.ReadLob;
+
+import net.sytes.joaojunior.model.Aluno;
+import net.sytes.joaojunior.model.Endereco;
+import net.sytes.joaojunior.utils.JPAUtil;
+import net.sytes.joaojunior.utils.ReadLob;
 
 
 public class JpaAluno {

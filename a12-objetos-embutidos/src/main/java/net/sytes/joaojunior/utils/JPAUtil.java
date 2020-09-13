@@ -1,4 +1,4 @@
-package br.edu.ifce.utils;
+package net.sytes.joaojunior.utils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

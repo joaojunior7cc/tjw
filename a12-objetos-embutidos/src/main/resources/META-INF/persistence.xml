@@ -6,8 +6,8 @@
 	  
   <persistence-unit name="TJW">
   	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-  	<class>br.edu.ifce.model.Aluno</class>
-  	<class>br.edu.ifce.model.Endereco</class>
+  	<class>net.sytes.joaojunior.model.Aluno</class>
+  	<class>net.sytes.joaojunior.model.Endereco</class>
 
   	<properties>
   		<property name="javax.persistence.schema-generation.database.action" 

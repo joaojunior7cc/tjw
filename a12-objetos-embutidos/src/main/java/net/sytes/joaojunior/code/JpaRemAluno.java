@@ -2,8 +2,8 @@ package net.sytes.joaojunior.code;
 
 import javax.persistence.EntityManager;
 
-import br.edu.ifce.model.Aluno;
-import br.edu.ifce.utils.JPAUtil;
+import net.sytes.joaojunior.model.Aluno;
+import net.sytes.joaojunior.utils.JPAUtil;
 
 public class JpaRemAluno {
 	public static void main (String args[]) {

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+
+<h:head>
+	<title>Nosso primeiro JSF</title>
+</h:head>
+<h:body>
+	<h:form id="form_01">
+	Adicione novas cores: <h:inputText id="input_01" value="#{coresBean.cor}"/>
+	<h:commandButton value="Adicionar Cor" action="#{coresBean.add}"/>
+	<br/>
+	<br/>
+	<h:selectOneMenu id="menu_selecao_01">
+		<f:selectItem itemLabel="-- Selecione --" noSelectionOption="true"/>
+		<f:selectItems value="#{coresBean.cores}"/>
+	</h:selectOneMenu>
+		
+	</h:form>
+</h:body>
+</html>

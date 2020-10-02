@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+
+<h:head>
+	<title>Nosso primeiro JSF</title>
+</h:head>
+<h:body>
+	<h:form id="form_01" >
+		<h:selectOneRadio value="#{coresBean.cor}"> 
+			<f:selectItems value="#{coresBean.cores}" />
+			<f:ajax render="texto"/>
+		</h:selectOneRadio><br />
+		A cor selecionada foi: <h:outputText id="texto" value="#{coresBean.cor}"/>
+	</h:form>
+</h:body>
+</html>

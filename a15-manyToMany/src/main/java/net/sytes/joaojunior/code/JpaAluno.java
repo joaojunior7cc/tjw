@@ -18,7 +18,7 @@ public class JpaAluno {
 		EntityManager manager = JPAUtil.getEntityManager();
 		
 		manager.getTransaction().begin();
-		byte[] foto = new ReadLob().getFoto("/home/corneli/aluno.jpeg") ;
+		byte[] foto = new ReadLob().getFoto("/home/joaojr/aluno.jpeg") ;
 		
 		Calendar c = Calendar.getInstance();
 		c.set(2020, 01, 01);

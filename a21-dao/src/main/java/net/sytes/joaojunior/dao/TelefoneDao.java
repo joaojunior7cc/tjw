@@ -5,30 +5,31 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import net.sytes.joaojunior.model.Aluno;
+import net.sytes.joaojunior.model.Telefone;
 import net.sytes.joaojunior.utils.JPAUtil;
 
-public class AlunoDao {
+public class TelefoneDao {
 	
 	EntityManager manager = JPAUtil.getEntityManager();
 	
-	public Aluno getById(Long id) {		
-		return manager.find(Aluno.class, id);
+	public Telefone getById(Long id) {		
+		return manager.find(Telefone.class, id);
 	}
 
-	public List<Aluno> findAll() {
-		String JPQL = "select a from Aluno a";
-		TypedQuery<Aluno> atq = manager.createQuery(JPQL,Aluno.class);	
+	public List<Telefone> findAll() {
+		String JPQL = "select t from Telefone t";
+		TypedQuery<Telefone> atq = manager.createQuery(JPQL,Telefone.class);	
 		return atq.getResultList();
 	}
-	public void salve(Aluno a,EntityManager manager) {
-		manager.persist(a);
+	public void salve(Telefone t,EntityManager manager) {
+		manager.persist(t);
 	}
-	public void update(Aluno a) {
+	public void update(Telefone t) {
 		manager.getTransaction().begin();
-		manager.merge(a);
+		manager.merge(t);
 		manager.getTransaction().commit();
 		manager.close();
+
 	}
 	public void delete(Long id) {
 		manager.getTransaction().begin();

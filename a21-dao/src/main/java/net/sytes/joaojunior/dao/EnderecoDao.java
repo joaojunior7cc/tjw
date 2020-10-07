@@ -5,34 +5,37 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import net.sytes.joaojunior.model.Aluno;
+import net.sytes.joaojunior.model.Endereco;
 import net.sytes.joaojunior.utils.JPAUtil;
 
-public class AlunoDao {
+public class EnderecoDao {
 	
 	EntityManager manager = JPAUtil.getEntityManager();
 	
-	public Aluno getById(Long id) {		
-		return manager.find(Aluno.class, id);
+	public Endereco getById(Long id) {		
+		return manager.find(Endereco.class, id);
 	}
 
-	public List<Aluno> findAll() {
-		String JPQL = "select a from Aluno a";
-		TypedQuery<Aluno> atq = manager.createQuery(JPQL,Aluno.class);	
+	public List<Endereco> findAll() {
+		String JPQL = "select e from Endereco e";
+		TypedQuery<Endereco> atq = manager.createQuery(JPQL,Endereco.class);	
 		return atq.getResultList();
 	}
-	public void salve(Aluno a,EntityManager manager) {
-		manager.persist(a);
+	
+	public void salve(Endereco e,EntityManager manager) {
+		manager.persist(e);
 	}
-	public void update(Aluno a) {
+	
+	public void update(Endereco e) {
 		manager.getTransaction().begin();
-		manager.merge(a);
+		manager.merge(e);
 		manager.getTransaction().commit();
 		manager.close();
+
 	}
 	public void delete(Long id) {
 		manager.getTransaction().begin();
-		manager.remove(getById(id));
+		manager.remove(getById(id));		
 		manager.getTransaction().commit();
 		manager.close();
 	}

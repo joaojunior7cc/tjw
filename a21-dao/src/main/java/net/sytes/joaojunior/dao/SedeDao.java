@@ -5,34 +5,34 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import net.sytes.joaojunior.model.Aluno;
+import net.sytes.joaojunior.model.Sede;
 import net.sytes.joaojunior.utils.JPAUtil;
 
-public class AlunoDao {
+public class SedeDao {
 	
 	EntityManager manager = JPAUtil.getEntityManager();
 	
-	public Aluno getById(Long id) {		
-		return manager.find(Aluno.class, id);
+	public Sede getById(Long id) {		
+		return manager.find(Sede.class, id);
 	}
 
-	public List<Aluno> findAll() {
-		String JPQL = "select a from Aluno a";
-		TypedQuery<Aluno> atq = manager.createQuery(JPQL,Aluno.class);	
+	public List<Sede> findAll() {
+		String JPQL = "select s from Sede s";
+		TypedQuery<Sede> atq = manager.createQuery(JPQL,Sede.class);	
 		return atq.getResultList();
 	}
-	public void salve(Aluno a,EntityManager manager) {
-		manager.persist(a);
+	public void salve(Sede s,EntityManager manager) {
+		manager.persist(s);
 	}
-	public void update(Aluno a) {
+	public void update(Sede s) {
 		manager.getTransaction().begin();
-		manager.merge(a);
+		manager.merge(s);
 		manager.getTransaction().commit();
 		manager.close();
 	}
 	public void delete(Long id) {
 		manager.getTransaction().begin();
-		manager.remove(getById(id));
+		manager.remove(getById(id));		
 		manager.getTransaction().commit();
 		manager.close();
 	}

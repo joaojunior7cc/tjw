@@ -12,6 +12,10 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import net.sytes.joaojunior.dao.AlunoDao;
+import net.sytes.joaojunior.dao.EnderecoDao;
+import net.sytes.joaojunior.dao.ExtraCurricularDao;
+import net.sytes.joaojunior.dao.SedeDao;
+import net.sytes.joaojunior.dao.TelefoneDao;
 import net.sytes.joaojunior.model.Aluno;
 import net.sytes.joaojunior.model.Endereco;
 import net.sytes.joaojunior.model.ExtraCurricular;
@@ -23,8 +27,7 @@ import net.sytes.joaojunior.utils.ReadLob;
 
 public class DAOTestes {
 	public static void main(String args[]) throws IOException {
-		EntityManager manager = JPAUtil.getEntityManager();
-		populardb(manager);
+		populardb();
 		//consultaInicial(manager);
 		//consultaSimples(manager);
 		//consultaSimplesQ(manager);
@@ -53,6 +56,83 @@ public class DAOTestes {
 			System.out.println(aluno.getId());
 			System.out.println("------------");
 		}
+		
+		salvarAluno();
+		
+	}
+	
+	public static void salvarAluno() throws IOException {
+		EntityManager manager = JPAUtil.getEntityManager();
+		manager.getTransaction().begin();
+		
+		byte[] foto = new ReadLob().getFoto("/home/joaojr/Imagens/aluno.jpg") ;
+		
+		Calendar c = Calendar.getInstance();
+		c.set(2020, 01, 01);
+		
+		Aluno a = new Aluno();
+		a.setNome("Ciclano de Ta2");
+		a.setRG("8888888888");
+		a.setCPF("888.888.888-88");
+			
+		Endereco e = new Endereco();
+		e.setCep("6000-000");
+		e.setCidade("Maracanau");
+		e.setLogradouro("Rua dos amores");
+		e.setBairro("Timbo");
+		
+		Telefone t1 = new Telefone();
+		t1.setTelefone("99999-9999");
+		t1.setTipo("Celular");
+		
+		Telefone t2 = new Telefone();
+		t2.setTelefone("3333-3333");
+		t2.setTipo("Fixo");
+		
+		a.getTelefone().add(t1);
+		a.getTelefone().add(t2);
+		
+		// Aqui ocorre a definição que "e" está relacionado a "a"
+		a.setEndereco(e);		
+		a.setIra(9.82);
+		a.setFotografia(foto);
+		a.setNascimento(c);
+		
+		
+		Sede s = new Sede();
+		s.setNome("IFCE Maracanau");
+		s.setDiretor("Julio Cesar");
+		//Sede s = manager.find(Sede.class, 1L);
+		a.setSede(s);
+		
+		ExtraCurricular atv1 = new ExtraCurricular();
+		atv1.setNome("Judo");
+		atv1.setValor("50,00");
+		
+		ExtraCurricular atv2 = new ExtraCurricular();
+		atv2.setNome("Reforço Escolar");
+		atv2.setValor("100,00");
+		
+		a.getAtividadesExtras().add(atv1);
+		a.getAtividadesExtras().add(atv2);
+		
+		//manager.persist(atv1);
+		new ExtraCurricularDao().salve(atv1, manager);
+		//manager.persist(atv2);
+		new ExtraCurricularDao().salve(atv2, manager);
+		//manager.persist(s);	
+		new SedeDao().salve(s, manager);
+		//manager.persist(t1);
+		new TelefoneDao().salve(t1, manager);
+		//manager.persist(t2);
+		new TelefoneDao().salve(t2, manager);
+		//manager.persist(e);
+		new EnderecoDao().salve(e, manager);
+		//manager.persist(a);		
+		new AlunoDao().salve(a,manager);
+		
+		manager.getTransaction().commit();
+		manager.close();
 	}
 	
 	public static void consultaInicial(EntityManager manager) {
@@ -94,7 +174,8 @@ public class DAOTestes {
 	
 	
 	
-	public static void populardb(EntityManager manager) throws IOException {
+	public static void populardb() throws IOException {
+		EntityManager manager = JPAUtil.getEntityManager();
 		manager.getTransaction().begin();
 		//##########################################################
 		byte[] foto = new ReadLob().getFoto("/home/joaojr/Imagens/aluno.jpg") ;
@@ -241,6 +322,7 @@ public class DAOTestes {
 		manager.persist(a2);
 		
 		manager.getTransaction().commit();	
+		manager.close();
 	}
 
 	public static void contarElementos(EntityManager manager) {
@@ -289,6 +371,7 @@ public class DAOTestes {
 			System.out.println(linha[0] + " " + linha[1]);
 		}		
 	}
+	
 	public static void selectNew (EntityManager manager) {
 		//Intancia o construct e passa os parametros
 		String jpql = "select new net.sytes.joaojunior.model.ResumoAluno" +

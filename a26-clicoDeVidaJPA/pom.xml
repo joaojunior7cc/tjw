@@ -41,7 +41,7 @@
 			<artifactId>javax.faces</artifactId>
 			<version>2.2.10</version>
 		</dependency>
-		<!-- dep para instanciar um bean (a24) -->
+		<!-- dep para instanciar um brean (a24) -->
 		<dependency>
 			<groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
 			<artifactId>owasp-java-html-sanitizer</artifactId>

@@ -4,7 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Embeddable;
 
+//@Embeddable//Esta class podera ser embutida em outra (Nao ira criar um tabela a parte, mas sim uma coluna na class que usa-la)
 @Entity
 @Table (name = "tbl_endereco")
 public class Endereco {

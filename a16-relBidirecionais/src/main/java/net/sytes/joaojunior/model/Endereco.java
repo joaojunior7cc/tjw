@@ -21,7 +21,12 @@ public class Endereco {
 	private String cidade;
 	
 	private String cep;
-	
+	/* Aula rel Bidirecional
+		Se so colocar esta anotacao ira criar a segunda FK (Nao eh o que eu quero)
+		Para ter um unica FK bidirecional tem que colocar os parametros 
+		O mappedByc diz quem eh o dono da relBidirecional
+		No caso eh endereco la no Aluno
+	*/
 	@OneToOne(mappedBy = "endereco",cascade = CascadeType.ALL)//dono do relBidirecional
 	private Aluno aluno;
 

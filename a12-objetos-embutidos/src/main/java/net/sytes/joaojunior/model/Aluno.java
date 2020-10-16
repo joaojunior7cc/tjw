@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -38,6 +39,7 @@ public class Aluno {
 	@Column (name = "cpf")
 	private String CPF;
 	
+	//@Embedded //as colunas de Endereco sera inserida na tbl_aluno(nao eh um relacionamento entre tabelas, nao criara um tbl_endereco)
 	@OneToOne
 	@JoinColumn(name="end_id")
 	private Endereco endereco;

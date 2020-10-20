@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 
 
 
-import br.edu.ifce.Beans.usuario;
+import br.edu.ifce.Beans.Usuario;
 
 
 
@@ -18,7 +18,7 @@ public class AddData {
 		EntityManagerFactory conn = Persistence.createEntityManagerFactory("tjw_jpa01");
 		EntityManager db = conn.createEntityManager();
 		
-	    usuario u = new usuario();
+	    Usuario u = new Usuario();
 	    u.setLogin("admin");
 	    u.setSenha("123456");
 	    

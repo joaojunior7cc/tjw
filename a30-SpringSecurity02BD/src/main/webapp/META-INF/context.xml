@@ -26,7 +26,7 @@
          -->
 <Resource name="jdbc/TJW"  global="jdbc/TJW"  auth="Container" type="javax.sql.DataSource"
                maxActive="100" maxIdle="30" maxWait="10000"
-               username="admin" password="123" driverClassName="com.mysql.jdbc.Driver"
+               username="root" password="112233-Mysql" driverClassName="com.mysql.jdbc.Driver"
                url="jdbc:mysql://localhost:3306/tjw?autoReconnect=true"/>
 
                

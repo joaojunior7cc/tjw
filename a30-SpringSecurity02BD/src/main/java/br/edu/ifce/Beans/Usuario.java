@@ -14,7 +14,7 @@ import javax.persistence.JoinColumn;
 
 
 @Entity
-public class usuario {
+public class Usuario {
 	
 	
 	@Id

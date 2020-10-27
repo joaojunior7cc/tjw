@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+
+<ui:composition template="../WEB-INF/template/template.xhtml">
+	<ui:define name="conteudo">
+		<p:growl id="growl" />
+		<p:panel id="pnl" header="Tarefa> Listar Tarefas"
+			style="margin-bottom:10px;">
+			<p:messages id="messages" />
+			<h:panelGrid columns="2" cellpadding="5">
+				
+				<p:outputLabel for="@next"  value="Exibir " />
+				<p:selectOneMenu id="sel_status" valueChangeListener="#{tarefaBean.setListaBySelect}"
+					rendered="true" onchange="submit()">
+					<f:ajax render="sel_status" />
+					<f:selectItem itemLabel="-- Todos Status --" itemValue="-1"/>
+					<f:selectItems value="#{statusBean.listaStatus}" var="status"
+						itemValue="#{status.id}" itemLabel="#{status.status}" />
+				</p:selectOneMenu>
+				<p:spacer/>
+				
+				<p:dataTable var="tarefa" value="#{tarefaBean.listaTarefa}">
+					<p:column headerText="Descrição">
+						<h:outputText value="#{tarefa.descricao}"
+							rendered="#{not tarefa.editar}" />
+						<h:inputText value="#{tarefa.descricao}"
+							rendered="#{tarefa.editar}" />
+					</p:column>
+
+					<p:column headerText="Data">
+						<h:outputText value="#{tarefa.data}"
+							rendered="#{not tarefa.editar}" />
+						<h:inputText value="#{tarefa.data}" rendered="#{tarefa.editar}"
+							a:placeholder="Ex. 2020-12-12">
+							<f:convertDateTime pattern="yyyy-MM-dd" />
+						</h:inputText>
+					</p:column>
+					<p:column headerText="Status">
+						<h:outputText value="#{tarefa.status.status}"
+							rendered="#{not tarefa.editar}" />
+						<p:selectOneMenu id="status" value="#{tarefaBean.idStatusSelect}"
+							rendered="#{tarefa.editar}">
+							<f:ajax render="status" />
+							<f:selectItems value="#{statusBean.listaStatus}" var="status"
+								itemValue="#{status.id}" itemLabel="#{status.status}" />
+						</p:selectOneMenu>
+					</p:column>
+					<p:column headerText="Ação">
+
+						<p:commandButton value="#{tarefa.tituloBtnEditar}" id="tarefa-ed"
+							action="#{tarefaBean.atualizar(tarefa)}" update="pg"
+							style="margin-right:20px;" icon="pi pi-refresh">
+							<!-- <f:setPropertyActionListener  target = "#{tarefaBean.tarefa}" 
+									value = "#{tarefa}" /> -->
+						</p:commandButton>
+
+						<p:commandButton id="tarefa-del"
+							action="#{tarefaBean.delete(tarefa)}" update="pg"
+							style="margin-right:20px;" icon="pi pi-trash" />
+					</p:column>
+				</p:dataTable>
+				<!--  -->
+			</h:panelGrid>
+		</p:panel>
+		<!-- <p:blockUI block="pnl" trigger="" /> -->
+	</ui:define>
+</ui:composition>
+</html>

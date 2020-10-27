@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+
+<ui:composition template="../WEB-INF/template/template.xhtml">
+	<ui:define name="conteudo">
+		<p:growl id="growl" />
+		<p:panel id="pnl" header="Status> Listar Status" style="margin-bottom:10px;">
+			<p:messages id="messages" />
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:dataTable id="pg_status" var="status" value="#{statusBean.listaStatus}">
+					<!-- <f:event listener="#{statusBean.atualizarStatus}" type="preRenderView" /> -->
+					<!-- <p:column headerText="Id">
+						<h:outputText value="#{status.id}" />
+					</p:column> -->
+
+					<p:column headerText="Status">
+						<h:inputText value="#{status.status}"  a:placeholder="Ex. Pendente"/>
+					</p:column>
+					<p:column headerText="Ação">
+						<p:commandButton id="status-edi" value="Editar" action="#{statusBean.update(status)}" update="pg" style="margin-right:20px;" icon="pi pi-refresh" />
+
+						<p:commandButton id="status-del" action="#{statusBean.delete(status)}" update="pg" style="margin-right:20px;" icon="pi pi-trash" />
+					</p:column>
+				</p:dataTable>
+			</h:panelGrid>
+
+		</p:panel>
+		<p:blockUI block="pnl" trigger="" />
+	</ui:define>
+</ui:composition>
+</html>

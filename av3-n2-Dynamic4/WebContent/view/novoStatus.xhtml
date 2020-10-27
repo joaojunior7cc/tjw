@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+
+<ui:composition template="../WEB-INF/template/template.xhtml">
+	<ui:define name="conteudo">
+		<p:growl id="growl" />
+		<p:panel id="pnl" header="Status> Cadastrar Status"
+			style="margin-bottom:10px;">
+			<p:messages id="messages" />
+			<h:panelGrid columns="2" cellpadding="5">
+				
+
+				<h:outputLabel for="status-desc" value="Descrição: *" />
+				<p:inputText id="status-desc" required="true"  a:placeholder="Ex. Pendente"
+					value="#{statusBean.status.status}" lable="status_desc" />
+
+			</h:panelGrid>
+			<p:commandButton id="saveBtn" value="Salvar" icon="pi pi-check" update="pg"
+				style="margin:0px;" actionListener="#{statusBean.save}" />
+		</p:panel>
+		<p:blockUI block="pnl" trigger="saveBtn" />
+	</ui:define>
+</ui:composition>
+</html>

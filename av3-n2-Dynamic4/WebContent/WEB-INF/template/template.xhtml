@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<style type="text/css">
+		.ui div{
+			text-align: center;
+			/* border:1px solid #fafafa; */
+		}
+	</style>
+	<title>App Lista Tarefas</title>
+	<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+</h:head>
+<h:body>
+	<h:form id="pg">
+		<div class="ui-g">
+			<div class="ui-g-12 ui-md-3"><p:graphicImage value="../img/logo.png" height="100"/></div>
+			<div class="ui-g-12 ui-md-9" style="font-size:60px; color:black;">App Lista Tarefas</div>
+		</div>
+	
+		<div class="ui-g">
+			<div class="ui-g-12 ui-md-3">
+				<p:menu>
+					<p:submenu label="Inicio">
+						<p:menuitem value=" Home" icon="pi pi-home" url="home.jsf"/>
+					</p:submenu>
+					<p:submenu label="Status">
+						<p:menuitem value=" Cadastrar" icon="pi pi-save" url="novoStatus.jsf"/>
+						<p:menuitem value=" Exibir Status" icon="pi pi-list" url="listarStatus.jsf" />
+					</p:submenu>
+					<p:submenu label="Tarefa">
+						<p:menuitem value=" Cadastrar" icon="pi pi-save" url="novaTarefa.jsf"/>
+						<p:menuitem value=" Exibir Tarefas" icon="pi pi-list" url="listarTarefas.jsf" />
+					</p:submenu>
+				</p:menu>
+			</div>
+			<div class="ui-g-12 ui-md-8">
+				<ui:insert name="conteudo">
+					Conteúdo do Template que pode ser modificado
+				</ui:insert>
+			</div>
+		</div>
+	
+	
+	
+	
+		
+	</h:form>
+</h:body>
+</html>
